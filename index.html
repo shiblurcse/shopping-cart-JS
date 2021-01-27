@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="productCounter(false)" id="case-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-count" type="text" class="form-control text-center" value="1">
+                           <button onclick="productCounter(true)" id="case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5 id="case-total">$59</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,7 +64,7 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5 id="subtotal">$1,278</h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
@@ -77,6 +77,41 @@
          </div>
       </div>
    </section>
+   <script>
+      function productCounter(isIncrease){
+         var caseInput = document.getElementById('case-count')
+         var caseCount = parseInt(caseInput.value)
+         let caseNewCount = caseCount
+         if(isIncrease == true){
+            caseNewCount = caseCount + 1
+         }
+         if(isIncrease == false && caseCount > 0) {
+            caseNewCount = caseCount - 1
+         }
+         caseInput.value = caseNewCount
+         var total = caseNewCount * 59
+         document.getElementById('case-total').innerText = '$' + total
+      }
+      // document.getElementById('case-increase').addEventListener('click', function(){
+      //    var caseInput = document.getElementById('case-count')
+      //    var caseCount = parseInt(caseInput.value)
+      //    var caseNewCount = caseCount + 1
+      //    caseInput.value = caseNewCount
+      //    var total = caseNewCount * 59
+      //    document.getElementById('case-total').innerText = '$' + total
+
+      // })
+      // document.getElementById('case-decrease').addEventListener('click', function(){
+      //    var caseInput = document.getElementById('case-count')
+      //    var caseCount = parseInt(caseInput.value)
+      //    var caseNewCount = caseCount - 1
+      //    caseInput.value = caseNewCount
+      //    var total = caseNewCount * 59
+      //    document.getElementById('case-total').innerText = '$' + total
+
+      // })
+
+   </script>
 </body>
 
 </html>
